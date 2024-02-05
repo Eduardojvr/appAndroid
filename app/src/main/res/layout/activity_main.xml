@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/teste"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:visibility="visible"
+    tools:context=".MainActivity">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fitsSystemWindows="true" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="criarBase"
+            android:text="Criar base de dados e tabela"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="inserirDados"
+            android:text="Inserir Dados" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="listarDados"
+            android:text="Listar os dados" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="atualizarDados"
+            android:text="Atualizar dados" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="excluirDados"
+            android:text="Excluir Dados"
+            tools:visibility="visible" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="mostrarResultadosNoTextView"
+            android:text="Mostrar na tela"
+            tools:visibility="visible" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="armazenar"
+            android:text="Armazenar no arquivo"
+            tools:visibility="visible" />
+
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="recuperar"
+            android:text="Ler e mostrar do arquivos"
+            tools:visibility="visible" />
+
+        <TextView
+            android:id="@+id/resultadoTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Resultado da consulta do banco de dados"
+            android:textSize="16sp"
+            android:padding="8dp"/>
+
+    </LinearLayout>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
