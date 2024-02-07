@@ -14,16 +14,22 @@
         android:layout_height="wrap_content"
         android:fitsSystemWindows="true" />
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp">
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="740dp"
         android:orientation="vertical">
 
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="criarBase"
-            android:text="Criar base de dados e tabela"/>
+            android:text="Criar base de dados e tabela" />
 
         <Button
             android:layout_width="match_parent"
@@ -76,10 +82,67 @@
             android:id="@+id/resultadoTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:padding="8dp"
             android:text="Resultado da consulta do banco de dados"
-            android:textSize="16sp"
-            android:padding="8dp"/>
+            android:textSize="16sp" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="mostrarResultadosNaTabela"
+            android:text="Mostrar na tabela"
+            tools:visibility="visible" />
+
+        <TableLayout
+            android:id="@+id/tabela"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <!-- Esta é a linha de cabeçalho da tabela -->
+            <TableRow>
+                <TextView
+                    android:text="Nome"
+                    android:padding="5dp" />
+
+                <TextView
+                    android:text="Departamento"
+                    android:padding="5dp" />
+
+                <TextView
+                    android:text="Salário"
+                    android:padding="5dp" />
+            </TableRow>
+
+            <!-- Aqui estão as linhas para os dados do banco de dados -->
+            <TableRow
+                android:id="@+id/resultadoTableRow"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/nomeTextView"
+                    android:padding="5dp" />
+
+                <TextView
+                    android:id="@+id/departamentoTextView"
+                    android:padding="5dp" />
+
+                <TextView
+                    android:id="@+id/salarioTextView"
+                    android:padding="5dp" />
+            </TableRow>
+        </TableLayout>
+
 
     </LinearLayout>
+    </ScrollView>
+<!--    <TextClock-->
+<!--        android:id="@+id/textClock"-->
+<!--        android:layout_width="73dp"-->
+<!--        android:layout_height="50dp"-->
+<!--        android:layout_marginLeft="100dp"-->
+<!--        app:layout_anchor="@+id/linearLayout"-->
+<!--        app:layout_anchorGravity="bottom|center" />-->
+
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

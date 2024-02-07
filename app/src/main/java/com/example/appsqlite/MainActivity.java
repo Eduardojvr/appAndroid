@@ -7,24 +7,14 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 
-import com.google.android.material.snackbar.Snackbar;
-
+import android.widget.TableLayout;
+import android.widget.TableRow;
+import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.util.Log;
 import android.view.View;
 
-import androidx.core.view.WindowCompat;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
-import androidx.navigation.ui.AppBarConfiguration;
-import androidx.navigation.ui.NavigationUI;
-
-import com.example.appsqlite.databinding.ActivityMainBinding;
-
-import android.view.Menu;
-import android.view.MenuItem;
-import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
@@ -130,7 +120,7 @@ public class MainActivity extends AppCompatActivity {
                 resultados.append(nome).append("\n");
                 resultados.append(departamento).append("\n");
                 resultados.append(salario).append("\n");
-                resultados.append("====================");
+                resultados.append("====================\n");
 
 
             } while (cursor.moveToNext());
@@ -181,6 +171,46 @@ public class MainActivity extends AppCompatActivity {
 
         textViewResultados.setText(resultados.toString());
 
+    }
+
+    public void mostrarResultadosNaTabela(View view) {
+        Cursor cursor = mDatabase.rawQuery("SELECT * FROM empregado", null);
+        TableLayout tableLayout = findViewById(R.id.tabela);
+
+        if (cursor != null && cursor.getCount() > 0) {
+            cursor.moveToFirst();
+
+            do {
+                @SuppressLint("Range")
+                String nome = cursor.getString(cursor.getColumnIndex("nome"));
+                @SuppressLint("Range")
+                String departamento = cursor.getString(cursor.getColumnIndex("departamento"));
+                @SuppressLint("Range")
+                String salario = cursor.getString(cursor.getColumnIndex("salario"));
+
+                TableRow row = new TableRow(this);
+
+                TextView nomeTextView = new TextView(this);
+                nomeTextView.setText(nome);
+                nomeTextView.setPadding(8, 8, 8, 8);
+                row.addView(nomeTextView);
+
+                TextView departamentoTextView = new TextView(this);
+                departamentoTextView.setText(departamento);
+                departamentoTextView.setPadding(8, 8, 8, 8);
+                row.addView(departamentoTextView);
+
+                TextView salarioTextView = new TextView(this);
+                salarioTextView.setText(salario);
+                salarioTextView.setPadding(8, 8, 8, 8);
+                row.addView(salarioTextView);
+
+                tableLayout.addView(row);
+
+            } while (cursor.moveToNext());
+
+            cursor.close();
+        }
     }
 
 
